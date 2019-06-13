@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import Persistencia.BD;
 import Persistencia.BibliotecaDbHelper;
 
 public class CandidatoAdapter extends RecyclerView.Adapter<CandidatoAdapter.ViewHolder> {
@@ -38,11 +39,39 @@ public class CandidatoAdapter extends RecyclerView.Adapter<CandidatoAdapter.View
 
     public void onBindViewHolder(@NonNull CandidatoAdapter.ViewHolder viewHolder, int i) {
         BibliotecaDbHelper bibliotecaHelper = new BibliotecaDbHelper(contexto);
-        SQLiteDatabase dbR = bibliotecaHelper.getReadableDatabase();
+        SQLiteDatabase db = bibliotecaHelper.getReadableDatabase();
+        String[] visao = {
+                BD.Candidato._ID,
+                BD.Candidato.COLUMN_NAME_NOME,
+                BD.Candidato.COLUMN_NAME_DATA_NASCIMENTO,
+                BD.Candidato.COLUMN_NAME_TELEFONE,
+                BD.Candidato.COLUMN_NAME_PERFIL,
+                BD.Candidato.COLUMN_NAME_EMAIL,
+        };
+        String selecao = BD.Candidato._ID + " >= ?";
+        String[] args = {"0"};
+        String sort = BD.Candidato._ID + " DESC";
+        items = db.query(BD.Candidato.TABLE_NAME, visao, selecao, args, null, null  , sort);
+
+        int idxNome = items.getColumnIndexOrThrow(BD.Candidato.COLUMN_NAME_NOME);
+        int idxDataNascimento = items.getColumnIndexOrThrow(BD.Candidato.COLUMN_NAME_DATA_NASCIMENTO);
+        int idxTelefone = items.getColumnIndexOrThrow(BD.Candidato.COLUMN_NAME_TELEFONE);
+        int idxPerfil = items.getColumnIndexOrThrow(BD.Candidato.COLUMN_NAME_PERFIL);
+        int idxEmail = items.getColumnIndexOrThrow(BD.Candidato.COLUMN_NAME_EMAIL);
+
+        items.moveToPosition(i);
+        viewHolder.textNome.setText(items.getString(idxNome));
+        viewHolder.textDataNascimento.setText(items.getString(idxDataNascimento));
+        viewHolder.textTelefone.setText(items.getString(idxTelefone));
+        viewHolder.textPerfil.setText(items.getString(idxPerfil));
+        viewHolder.textEmail.setText(items.getString(idxEmail));
 
     }
 
     public int getItemCount(){
+        if (items == null){
+            return 0;
+        }
         return items.getCount();
     }
 

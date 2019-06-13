@@ -56,12 +56,12 @@ public final class BD {
     }
 
     public static final class Categoria implements BaseColumns{
-        public static final String TABLE_NAME = "producao";
+        public static final String TABLE_NAME = "categoria";
         public static final String COLUMN_NAME_TITULO = "titulo";
     }
 
     public static final class Atividade implements BaseColumns{
-        public static final String TABLE_NAME = "producao";
+        public static final String TABLE_NAME = "atividade";
         public static final String COLUMN_NAME_DESCRICAO = "descricao";
         public static final String COLUMN_NAME_DATA = "data";
         public static final String COLUMN_NAME_HORAS = "horas";
