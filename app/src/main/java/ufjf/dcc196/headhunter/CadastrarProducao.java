@@ -17,9 +17,6 @@ public class CadastrarProducao extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastrar_producao);
 
-        final Intent intent = new Intent();
-        final Bundle bundle = intent.getExtras();
-
         final EditText etTitulo = findViewById(R.id.editTextTituloProducao);
         final EditText etDescricao = findViewById(R.id.editTextDescricaoProducao);
         final EditText etInicio = findViewById(R.id.editTextDataInicioProducao);
