@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     public Cursor c;
     public static final int REQUEST_MAIN = 1;
     public static final int REQUEST_EDT = 2;
+    public static final int REQUEST_LIST = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +49,18 @@ public class MainActivity extends AppCompatActivity {
         btnCadastar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =new Intent(MainActivity.this, CadastrarCandidato.class);
+                Intent intent = new Intent(MainActivity.this, CadastrarCandidato.class);
                 startActivityForResult(intent, MainActivity.REQUEST_MAIN);
+            }
+        });
+
+        Button btnListaProducao = findViewById(R.id.btnListaProducao);
+
+        btnListaProducao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ListaProcucao.class);
+                startActivityForResult(intent, MainActivity.REQUEST_LIST);
             }
         });
 

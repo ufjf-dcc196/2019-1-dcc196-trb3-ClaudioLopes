@@ -23,12 +23,14 @@ public final class BD {
             Producao.COLUMN_NAME_TITULO + Text_Type + Sep +
             Producao.COLUMN_NAME_DESCRICAO + Text_Type + Sep +
             Producao.COLUMN_NAME_INICIO + Data_Type + Sep +
-            Producao.COLUMN_NAME_FIM + Data_Type + ")";
+            Producao.COLUMN_NAME_FIM + Data_Type + Sep +
+            Producao.COLUMN_NAME_ID_CANDIDATO + Int_Type + ")";
     public static final String SQL_DROP_PRODUCAO = "DROP TABLE IF EXISTS " + Producao.TABLE_NAME;
 
     public static final String SQL_CREATE_CATEGORIA = "CREATE TABLE " + Categoria.TABLE_NAME + " (" +
             Categoria._ID + Int_Type + " PRIMARY KEY AUTOINCREMENT" + Sep +
-            Categoria.COLUMN_NAME_TITULO + ")";
+            Categoria.COLUMN_NAME_TITULO + Text_Type + Sep +
+            Categoria.COLUMN_NAME_ID_PRODUCAO + Int_Type + ")";
     public static final String SQL_DROP_CATEGORIA = "DROP TABLE IF EXISTS " + Categoria.TABLE_NAME;
 
     public static final String SQL_CREATE_ATIVIDADE = "CREATE TABLE " + Atividade.TABLE_NAME + " (" +
@@ -53,11 +55,13 @@ public final class BD {
         public static final String COLUMN_NAME_DESCRICAO = "descricao";
         public static final String COLUMN_NAME_INICIO = "inicio";
         public static final String COLUMN_NAME_FIM = "fim";
+        public static final String COLUMN_NAME_ID_CANDIDATO = "id_candidato";
     }
 
     public static final class Categoria implements BaseColumns{
         public static final String TABLE_NAME = "categoria";
         public static final String COLUMN_NAME_TITULO = "titulo";
+        public static final String COLUMN_NAME_ID_PRODUCAO = "id_producao";
     }
 
     public static final class Atividade implements BaseColumns{
